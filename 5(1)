@@ -1,0 +1,26 @@
+# Список для хранения результатов
+result = []
+
+# Функция, которая вызывает исключения
+def divider(a, b):
+    # Проверка, что a меньше b
+    if a < b:
+        raise ValueError("a меньше b, невозможно выполнить операцию.")
+    # Проверка, что b меньше 100
+    if b > 100:
+        raise IndexError("b больше 100, невозможна операция.")
+    return a / b
+
+# Пример данных с различными типами ошибок
+data = {10: 2, 2: 5, '123': 4, 18: 0, []: 15, 8: '4'}
+
+# Обработка каждого элемента данных
+for key in data:
+    try:
+        res = divider(key, data[key])
+        result.append(res)
+    except (ValueError, IndexError) as e:
+        print(f"Ошибка: {e}")
+
+# Вывод результата
+print(result)
