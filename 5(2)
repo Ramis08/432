@@ -1,0 +1,30 @@
+result = []
+
+# Функция для деления с проверкой условий
+def divider(a, b):
+    if a < b:
+        raise ValueError("Значение a меньше b")
+    if b > 100:
+        raise IndexError("Значение b больше 100")
+    return a / b
+
+# Данные для обработки
+data = {10: 2, 2: 5, "123": 4, 18: 0, []: 15, 8: 4}  # Обратите внимание, что ключ [] вызовет ошибку
+
+# Обработка данных с обработкой исключений
+for key in data:
+    try:
+        res = divider(key, data[key])
+        result.append(res)
+    except ZeroDivisionError:
+        print(f"Ошибка: Деление на ноль для ключа {key}")
+    except TypeError:
+        print(f"Ошибка: Неверный тип данных для ключа {key}")
+    except ValueError as e:
+        print(f"Ошибка значения для ключа {key}: {e}")
+    except IndexError as e:
+        print(f"Ошибка индекса для ключа {key}: {e}")
+    except Exception as e:
+        print(f"Неизвестная ошибка для ключа {key}: {e}")
+
+print(result)
